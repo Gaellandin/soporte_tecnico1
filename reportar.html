@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario para Reportar Falla</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    select,
+    textarea,
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    select:focus,
+    textarea:focus {
+      border-color: #5cb85c;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #218838;
+    }
+
+    input[type="submit"]:active {
+      background-color: #1e7e34;
+    }
+
+    
+    .form-container:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Formulario para Reportar Falla</h2>
+
+    <form action="guardar_reporte.php" method="POST" enctype="multipart/form-data">
+      <label for="categoria">Categoría:</label>
+      <select id="categoria" name="categoria" required>
+        <option value="">Seleccione</option>
+        <option value="Fichas Tecnicas">Fichas Tecnicas</option>
+        <option value="software">Software</option>
+        <option value="red">Red</option>
+        <option value="SysFactory">Sysfactory</option>
+      </select>
+
+      <label for="descripcion">Descripción del problema:</label>
+      <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+
+      <input type="submit" value="Enviar Reporte">
+    </form>
+  </div>
+
+</body>
+</html>

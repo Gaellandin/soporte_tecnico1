@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Soporte Técnico </title>
+
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Tema oscuro */
+    body.dark {
+      background-color: #121212;
+      color: #f4f4f4;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      color: #222;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      border-bottom: 3px solid #0a9396;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    header img {
+      height: 90px;
+      width: auto;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #046275;
+    }
+
+    /* Main Section */
+    main {
+      flex: 1;
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    main.dark {
+      background-color: #333;
+      color: #f4f4f4;
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    h2 {
+      color: #005f73;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    /* Enlaces */
+    a {
+      display: inline-block;
+      margin: 20px 10px 0 0;
+      padding: 15px 30px;
+      background-color: #0a9396;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #007f86;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #001219;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      border-top: 1px solid #555;
+      transition: background-color 0.3s ease;
+    }
+
+    footer.dark {
+      background-color: #333;
+      color: #f4f4f4;
+    }
+
+    /* Botón de interrupción de tema */
+    .theme-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #0a9396;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1.3em;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .theme-switch.dark {
+      background-color: #333;
+      color: #f4f4f4;
+    }
+
+    .theme-switch:hover {
+      background-color: #007f86;
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Interruptor de tema -->
+  <button class="theme-switch" id="theme-switch">🌙</button>
+
+  <header>
+    <div class="header-content">
+      <img src="logo.png" alt="Logo Empresa">
+      <h1>Soporte Técnico</h1>
+    </div>
+  </header>
+
+  <main>
+    <h2>Bienvenido al sistema de reportes y solicitudes</h2>
+    <p>Utiliza este portal para reportar fallas técnicas y darles seguimiento.</p>
+    <a href="reportar.html">📋 Reportar una Falla sistemas</a>
+    <a href="login.html">🔐 Inicio Sesión Administradores</a>
+    <a href="solicitud_recursos.php">💵 Solicitar Recursos</a>
+    <a href="ver_solicitud_cliente.php">💵 Estado de Solicitudes</a>
+    <a href="mantenimiento.php">👨🏻‍💻 Limpieza De Equipo</a>
+  </main>
+
+  <footer>
+    <p>Contacto: sistemas@colorin.com.mx</p>
+    <p>© 2025 Color In</p>
+  </footer>
+
+  <script>
+    // Comprobar si hay una preferencia almacenada de tema
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    // Obtener elementos para cambiar el tema
+    const body = document.body;
+    const themeSwitch = document.getElementById('theme-switch');
+    const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
+
+    // Función para aplicar el tema
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark');
+        main.classList.add('dark');
+        footer.classList.add('dark');
+        themeSwitch.classList.add('dark');
+        themeSwitch.textContent = '☀️';
+      } else {
+        body.classList.remove('dark');
+        main.classList.remove('dark');
+        footer.classList.remove('dark');
+        themeSwitch.classList.remove('dark');
+        themeSwitch.textContent = '🌙';
+      }
+    }
+
+    // Aplicar el tema actual al cargar
+    applyTheme(currentTheme);
+
+    // Cambiar tema al hacer click en el interruptor
+    themeSwitch.addEventListener('click', () => {
+      const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+      localStorage.setItem('theme', newTheme);
+      applyTheme(newTheme);
+    });
+  </script>
+
+</body>
+</html>

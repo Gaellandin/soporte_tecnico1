@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Soporte Técnico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="loginForm">
+    <h2>Iniciar Sesión 🔐</h2>
+
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" required>
+
+    <label for="clave">Contraseña:</label>
+    <input type="password" id="clave" name="clave" required>
+
+    <input type="submit" value="Ingresar">
+    <div class="error" id="errorMsg"></div>
+  </form>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita el envío por defecto
+
+      const usuario = document.getElementById('usuario').value.trim();
+      const clave = document.getElementById('clave').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      // Datos de acceso estáticos
+      const adminUsuario = 'admin';
+      const adminClave = 'admin123';
+
+      if (usuario === adminUsuario && clave === adminClave) {
+        window.location.href = 'menu.html';
+      } else {
+        errorMsg.textContent = 'Usuario o contraseña incorrectos.';
+      }
+    });
+  </script>
+
+</body>
+</html>
